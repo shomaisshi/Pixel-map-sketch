@@ -31,13 +31,15 @@ class PixelData {
 
 				for (let i = 0; i < toolUI.switchAreaContainer.pallet.tileNum; i++) {
 					if (this.tiles[y][x] === i) {
+						stroke(toolUI.switchAreaContainer.pallet.colors[i]);
 						fill(toolUI.switchAreaContainer.pallet.colors[i]);
 					}
 				}
 
 				const tilePosX = this.x + (x * this.w);
 				const tilePosY = this.y + (y * this.h);
-				noStroke();
+				// noStroke();
+				strokeWeight(1);
 				rect(tilePosX, tilePosY, this.w, this.h);
 
 				pop();
