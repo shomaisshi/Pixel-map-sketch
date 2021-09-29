@@ -1,9 +1,9 @@
 let toolUI;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(375, windowHeight);
 	background(170);
-	
+
 	toolUI = new ToolUI();
 	toolUI.show();
 }

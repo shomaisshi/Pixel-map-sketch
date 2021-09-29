@@ -27,12 +27,14 @@ class Pallet {
    * @param {number} x パレットのx座標
    * @param {number} y パレットのy座標
    */
-	constructor(x, y) {
+	constructor(x, y, w, h) {
 		this.tiles = [];
 		this.x = x;
 		this.y = y;
-		this.tileWidth = 50;
-		this.tileHeight = 50;
+		this.w = w;
+		this.h = h;
+		this.tileWidth = this.w / 8;
+		this.tileHeight = this.h;
 		this.selectTile = 3;
 		this.tileNum = 16;
 		this.colors = [

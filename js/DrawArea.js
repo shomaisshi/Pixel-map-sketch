@@ -51,17 +51,21 @@ class DataUI {
 	 * @param {number} x UIのx座標
    * @param {number} y UIのy座標
    */
-	constructor(x, y) {
+	constructor(x, y, w, h) {
 		this.pixelData = [];
 		this.x = x;
 		this.y = y;
+		this.w = w;
+		this.h = h;
 		this.tileNum = 8;
+		this.tileWidth = this.w / 8;
+		this.tileHeight = this.h;
 		this.selectTile = 0;
 	}
 
 	set() {
 		for (let i = 0; i < this.tileNum; i++) {
-			this.pixelData[i] = new PixelData(this.x + i * 50, this.y, 50, 50);
+			this.pixelData[i] = new PixelData(this.x + i * this.tileWidth, this.y, this.tileWidth, this.tileHeight);
 		}
 	}
 
@@ -75,9 +79,12 @@ class DataUI {
 			) {
 				this.selectTile = i;
 			}
+		}
+	}
 
+	showSelectArea() {
+		for (let i = 0; i < this.tileNum; i++) {
 			if (this.selectTile === i) {
-				const margin = 4;
 				push();
 				noFill();
 				stroke(0, 0, 255);
@@ -91,6 +98,7 @@ class DataUI {
 	show() {
 		for (let i = 0; i < this.tileNum; i++) {
 			this.pixelData[i].show();
+			this.showSelectArea();
 		}
 	}
 }
