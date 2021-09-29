@@ -22,6 +22,7 @@ class SwitchAreaButton {
 
 	show() {
 		push();
+		noStroke();
 		fill(this.c);
 		rect(this.x, this.y, this.w, this.h);
 		fill(0);
