@@ -9,10 +9,68 @@ class Layout {
 		this.dataUI = new DataUI(0, 525, 375, 100, 8, 2, this.pxielSize);
 	}
 
+	// save
+	save() {
+		// drawAreaData
+		const drawAreaData = [];
+		for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
+			drawAreaData[i] = this.drawArea.drawTile.pixels[i].colorNum;
+		}
+		storeItem('drawAreaData', JSON.stringify(drawAreaData));
+
+		// mapAreaData
+		const mapAreaData = [];
+		for (let i = 0; i < this.mapArea.tiles.length; i++) {
+			mapAreaData[i] = this.mapArea.tiles[i].num;
+		}
+		storeItem('mapAreaData', JSON.stringify(mapAreaData));
+
+		// dataUIData
+		const dataUIData = [];
+		for (let i = 0; i < this.dataUI.tiles.length; i++) {
+			for (let j = 0; j < this.dataUI.tiles[0].pixels.length; j++) {
+				dataUIData.push(this.dataUI.tiles[i].pixels[j].colorNum);
+			}
+		}
+		print(dataUIData);
+		storeItem('dataUIData', JSON.stringify(dataUIData));
+	}
+
+	// saveデータ読み込み
 	set() {
 		this.drawArea.set();
 		this.mapArea.set();
 		this.dataUI.set();
+
+		// drawAreaデータの読み込み
+		let drawAreaData = [];
+		drawAreaData = JSON.parse(getItem('drawAreaData'));
+		if (drawAreaData !== null) {
+			for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
+				this.drawArea.drawTile.pixels[i].colorNum = drawAreaData[i];
+			}
+		}
+
+		// mapAreaデータの読み込み
+		let mapAreaData = [];
+		mapAreaData = JSON.parse(getItem('mapAreaData'));
+		if (mapAreaData !== null) {
+			for (let i = 0; i < this.mapArea.tiles.length; i++) {
+				this.mapArea.tiles[i].num = mapAreaData[i];
+			}
+		}
+
+		// dataUIデータの読み込み
+		let dataUIData = [];
+		dataUIData = JSON.parse(getItem('dataUIData'));
+		if (dataUIData !== null) {
+			for (let i = 0; i < this.dataUI.tiles.length; i++) {
+				for (let j = 0; j < this.dataUI.tiles[0].pixels.length; j++) {
+					this.dataUI.tiles[i].pixels[j].colorNum = (dataUIData[(i * 49) + j]);
+				}
+			}
+		}
+
 	}
 
 	isDraw(area) {
@@ -49,7 +107,6 @@ class Layout {
 	// drawAreaで描画した時、選択しているDataUIにデータを渡す
 	updateDrawArea() {
 		if (this.isDraw(this.drawArea)) {
-			// print('updateDrawArea ok');
 			for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
 				this.dataUI.tiles[this.dataUI.selectTile].pixels[i].colorNum = this.drawArea.drawTile.pixels[i].colorNum;
 			}
@@ -59,7 +116,6 @@ class Layout {
 	// DataUIを選択した時、drawAreaに選択したタイルのデータを渡す
 	updateDataUI() {
 		if (this.isDraw(this.dataUI)) {
-			// print('updateDataUI ok');
 			for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
 				this.drawArea.drawTile.pixels[i].colorNum = this.dataUI.tiles[this.dataUI.selectTile].pixels[i].colorNum;
 			}
@@ -96,7 +152,6 @@ class Layout {
 			this.mapArea.selected();
 			this.updateMapArea();
 			this.mapArea.show();
-			this.mapArea.selectedAreaShow();
 		}
 		this.mapAreaButton.show();
 	}

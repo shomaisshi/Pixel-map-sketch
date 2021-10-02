@@ -10,9 +10,16 @@ function setup() {
 function mousePressed() {
 	background(200);
 	layout.show();
+	if (mouseX > 0 && mouseX < 100 && mouseY > 0 && mouseY < 50) {
+		layout.save();
+	}
 }
 
 function mouseDragged() {
 	background(200);
 	layout.show();
+}
+
+function keyPressed() {
+	layout.save();
 }
