@@ -11,13 +11,6 @@ class Layout {
 
 	// save
 	save() {
-		// drawAreaData
-		const drawAreaData = [];
-		for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
-			drawAreaData[i] = this.drawArea.drawTile.pixels[i].colorNum;
-		}
-		storeItem('drawAreaData', JSON.stringify(drawAreaData));
-
 		// mapAreaData
 		const mapAreaData = [];
 		for (let i = 0; i < this.mapArea.tiles.length; i++) {
@@ -42,15 +35,6 @@ class Layout {
 		this.mapArea.set();
 		this.dataUI.set();
 
-		// drawAreaデータの読み込み
-		let drawAreaData = [];
-		drawAreaData = JSON.parse(getItem('drawAreaData'));
-		if (drawAreaData !== null) {
-			for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
-				this.drawArea.drawTile.pixels[i].colorNum = drawAreaData[i];
-			}
-		}
-
 		// mapAreaデータの読み込み
 		let mapAreaData = [];
 		mapAreaData = JSON.parse(getItem('mapAreaData'));
@@ -71,6 +55,10 @@ class Layout {
 			}
 		}
 
+		// drawAreaデータの読み込み
+		for (let i = 0; i < this.drawArea.drawTile.pixels.length; i++) {
+			this.drawArea.drawTile.pixels[i].colorNum = this.dataUI.tiles[this.dataUI.selectTile].pixels[i].colorNum;
+		}
 	}
 
 	isDraw(area) {
