@@ -25,7 +25,6 @@ class Layout {
 				dataUIData.push(this.dataUI.tiles[i].pixels[j].colorNum);
 			}
 		}
-		print(dataUIData);
 		storeItem('dataUIData', JSON.stringify(dataUIData));
 	}
 

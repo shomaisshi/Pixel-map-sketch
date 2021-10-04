@@ -1,7 +1,7 @@
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(200);
-	
+
 	layout = new Layout();
 	layout.set();
 	layout.show();
@@ -10,7 +10,7 @@ function setup() {
 function mousePressed() {
 	background(200);
 	layout.show();
-	if (mouseX > 0 && mouseX < 100 && mouseY > 0 && mouseY < 50) {
+	if (mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < 50) {
 		layout.save();
 	}
 }
