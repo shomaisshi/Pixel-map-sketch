@@ -23,3 +23,7 @@ function mouseDragged() {
 function keyPressed() {
 	layout.save();
 }
+
+function mouseReleased() {
+	layout.imgDownload();
+}

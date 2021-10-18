@@ -4,6 +4,7 @@ class Layout {
 		this.mapSize = 8;
 		this.drawAreaButton = new SwitchAreaButton('Draw', 0, 0, 100, 50, true);
 		this.mapAreaButton = new SwitchAreaButton('Map', 100, 0, 100, 50, false);
+		this.downloadButton = new DownloadButton(375 - 50, 0, 50, 50);
 		this.drawArea = new DrawArea(0, 50, 375, 375, this.pxielSize);
 		this.mapArea = new MapArea(0, 50, 375, 375, this.mapSize, this.mapSize, this.pxielSize);
 		this.dataUI = new DataUI(0, 525, 375, 100, 8, 2, this.pxielSize);
@@ -161,5 +162,13 @@ class Layout {
 		this.dataUI.show();
 		this.dataUI.borderShow();
 		this.dataUI.selectedAreaShow();
+
+		// ダウンロードボタン表示
+		this.downloadButton.selected();
+		this.downloadButton.show();
+	}
+
+	imgDownload() {
+		this.downloadButton.download();
 	}
 }
