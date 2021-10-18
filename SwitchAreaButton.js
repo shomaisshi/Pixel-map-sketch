@@ -79,6 +79,9 @@ class DownloadButton {
 		}
 		fill(this.c);
 		ellipse(this.x, this.y, this.w, this.h);
+		line(this.x + this.w / 2, this.y + 10, this.x + this.w / 2, this.y + this.h - 10);
+		line(this.x + 10, this.y + 25, this.x + this.w / 2, this.y + this.h - 10)
+		line(this.x + this.w - 10, this.y + 25, this.x + this.w / 2, this.y + this.h - 10)
 		pop();
 	}
 }
