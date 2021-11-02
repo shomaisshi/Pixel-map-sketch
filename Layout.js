@@ -1,7 +1,7 @@
 class Layout {
 	constructor() {
-		this.pxielSize = 7;
-		this.mapSize = 8;
+		this.pxielSize = 8;
+		this.mapSize = 10;
 		this.drawAreaButton = new SwitchAreaButton('Draw', 0, 0, 100, 50, true);
 		this.mapAreaButton = new SwitchAreaButton('Map', 100, 0, 100, 50, false);
 		this.downloadButton = new DownloadButton(375 - 50, 0, 50, 50);
