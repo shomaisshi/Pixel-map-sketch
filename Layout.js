@@ -50,7 +50,7 @@ class Layout {
 		if (dataUIData !== null) {
 			for (let i = 0; i < this.dataUI.tiles.length; i++) {
 				for (let j = 0; j < this.dataUI.tiles[0].pixels.length; j++) {
-					this.dataUI.tiles[i].pixels[j].colorNum = (dataUIData[(i * 49) + j]);
+					this.dataUI.tiles[i].pixels[j].colorNum = (dataUIData[(i * (this.pxielSize ** 2)) + j]);
 				}
 			}
 		}

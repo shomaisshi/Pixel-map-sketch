@@ -10,7 +10,7 @@ function setup() {
 function mousePressed() {
 	background(200);
 	layout.show();
-	if (mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < 50) {
+	if (mouseX > 0 && mouseX < 375 && mouseY > 0 && mouseY < 50) {
 		layout.save();
 	}
 }
