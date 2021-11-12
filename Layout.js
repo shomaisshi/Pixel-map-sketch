@@ -82,8 +82,8 @@ class Layout {
 			}
 		}
 	}
+	// 全てのタイルを描画する
 	mapAreaShow() {
-		// 全てのタイルを描画する
 		for (let i = 0; i < this.mapArea.tiles.length; i++) {
 			const num = this.mapArea.tiles[i].num;
 			for (let j = 0; j < this.drawArea.drawTile.pixels.length; j++) {
@@ -119,7 +119,7 @@ class Layout {
 
 		this.mapAreaButton.selected();
 		if (this.mapAreaButton.isSelect === true) {
-			this.mapAreaShow();
+			// this.mapAreaShow();
 			this.drawAreaButton.isSelect = false;
 		}
 	}
@@ -156,6 +156,14 @@ class Layout {
 		this.switchDrawArea();
 
 		// mapAreaを表示する
+		if (
+			mouseX > this.mapAreaButton.x &&
+			mouseX < this.mapAreaButton.x + this.mapAreaButton.w &&
+			mouseY > this.mapAreaButton.y &&
+			mouseY < this.mapAreaButton.y + this.mapAreaButton.h
+		) {
+			this.mapAreaShow();
+		}
 		this.switchMapArea();
 
 		// DataUIを表示する
