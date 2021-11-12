@@ -24,7 +24,7 @@ class Pixel {
 			color('#FFCCAA'),
 		];
 	}
-	
+
 	show() {
 		push();
 		stroke(this.colors[this.colorNum]);
@@ -46,19 +46,19 @@ class Tile {
 		this.pixelNum = row * column;
 		this.pixelWidth = this.w / this.row;
 		this.pixelHeight = this.h / this.column;
-		
+
 		this.num = 9;
 		this.selectTile = 3;
 	}
-	
+
 	set() {
 		for (let i = 0; i < this.column; i++) {
 			for (let j = 0; j < this.row; j++) {
-				this.pixels.push(new Pixel(7, this.x + (i*this.pixelWidth), this.y + (j * this.pixelHeight), this.pixelWidth, this.pixelHeight));	
+				this.pixels.push(new Pixel(7, this.x + (i * this.pixelWidth), this.y + (j * this.pixelHeight), this.pixelWidth, this.pixelHeight));
 			}
 		}
 	}
-	
+
 	borderShow() {
 		for (let i = 0; i < this.column; i++) {
 			for (let j = 0; j < this.row; j++) {
@@ -66,12 +66,12 @@ class Tile {
 				stroke(0);
 				strokeWeight(1);
 				noFill();
-				rect(this.x + (j*this.pixelWidth), this.y + (i * this.pixelHeight), this.pixelWidth, this.pixelHeight);
+				rect(this.x + (j * this.pixelWidth), this.y + (i * this.pixelHeight), this.pixelWidth, this.pixelHeight);
 				pop();
 			}
 		}
 	}
-	
+
 	show() {
 		for (let i = 0; i < this.pixelNum; i++) {
 			this.pixels[i].show();
@@ -83,11 +83,11 @@ class PalletTile extends Tile {
 	set() {
 		for (let i = 0; i < this.column; i++) {
 			for (let j = 0; j < this.row; j++) {
-				this.pixels.push(new Pixel(i*8+j, this.x + (j*this.pixelWidth), this.y + (i * this.pixelHeight), this.pixelWidth, this.pixelHeight));	
+				this.pixels.push(new Pixel(i * 8 + j, this.x + (j * this.pixelWidth), this.y + (i * this.pixelHeight), this.pixelWidth, this.pixelHeight));
 			}
 		}
 	}
-	
+
 	selected() {
 		for (let i = 0; i < this.pixelNum; i++) {
 			if (
@@ -95,15 +95,15 @@ class PalletTile extends Tile {
 				mouseX < this.pixels[i].x + this.pixels[i].w &&
 				mouseY > this.pixels[i].y &&
 				mouseY < this.pixels[i].y + this.pixels[i].h
-				 ) {
+			) {
 				this.selectTile = this.pixels[i].colorNum;
 			}
 		}
 	}
-	
+
 	selectedAreaShow() {
 		push();
-		stroke(0, 0, 0);
+		stroke(0, 0, 255);
 		strokeWeight(4);
 		noFill();
 		rect(this.pixels[this.selectTile].x, this.pixels[this.selectTile].y, this.pixels[this.selectTile].w, this.pixels[this.selectTile].h);
@@ -119,7 +119,7 @@ class DrawTile extends Tile {
 				mouseX < this.pixels[i].x + this.pixels[i].w &&
 				mouseY > this.pixels[i].y &&
 				mouseY < this.pixels[i].y + this.pixels[i].h
-				 ) {
+			) {
 				this.pixels[i].colorNum = colorNum;
 			}
 		}

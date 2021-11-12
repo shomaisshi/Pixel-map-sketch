@@ -42,7 +42,7 @@ class TileMap {
 
 	selectedAreaShow() {
 		push();
-		stroke(0, 0, 0);
+		stroke(0, 0, 255);
 		strokeWeight(4);
 		noFill();
 		rect(this.tiles[this.selectTile].x, this.tiles[this.selectTile].y, this.tiles[this.selectTile].w, this.tiles[this.selectTile].h);

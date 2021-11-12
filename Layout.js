@@ -142,7 +142,13 @@ class Layout {
 			mouseY > this.mapAreaButton.y &&
 			mouseY < this.mapAreaButton.y + this.mapAreaButton.h
 		) {
-			background(200);
+			// パレットの部分を隠す
+			push();
+			noStroke();
+			fill(200);
+			rect(0, 50, width, height);
+			pop();
+			// マップを表示する
 			this.mapAreaShow();
 			this.mapArea.show();
 		}
