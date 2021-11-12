@@ -156,14 +156,15 @@ class Layout {
 		this.switchDrawArea();
 
 		// mapAreaを表示する
-		if (
-			mouseX > this.mapAreaButton.x &&
-			mouseX < this.mapAreaButton.x + this.mapAreaButton.w &&
-			mouseY > this.mapAreaButton.y &&
-			mouseY < this.mapAreaButton.y + this.mapAreaButton.h
-		) {
-			this.mapAreaShow();
-		}
+		// if (
+		// 	mouseX > this.mapAreaButton.x &&
+		// 	mouseX < this.mapAreaButton.x + this.mapAreaButton.w &&
+		// 	mouseY > this.mapAreaButton.y &&
+		// 	mouseY < this.mapAreaButton.y + this.mapAreaButton.h
+		// ) {
+		// 	console.log('ok');
+		// 	this.mapAreaShow();
+		// }
 		this.switchMapArea();
 
 		// DataUIを表示する
