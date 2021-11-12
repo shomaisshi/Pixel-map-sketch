@@ -62,6 +62,7 @@ class TileMap {
 		}
 	}
 
+	// 選択してるタイルだけ描画する
 	showSelectTile() {
 		this.tiles[this.selectTile].show();
 	}

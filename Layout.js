@@ -142,6 +142,7 @@ class Layout {
 			mouseY > this.mapAreaButton.y &&
 			mouseY < this.mapAreaButton.y + this.mapAreaButton.h
 		) {
+			background(200);
 			this.mapAreaShow();
 			this.mapArea.show();
 		}
