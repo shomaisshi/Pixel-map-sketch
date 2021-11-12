@@ -136,10 +136,19 @@ class Layout {
 
 	switchMapArea() {
 		// mapArea
+		if (
+			mouseX > this.mapAreaButton.x &&
+			mouseX < this.mapAreaButton.x + this.mapAreaButton.w &&
+			mouseY > this.mapAreaButton.y &&
+			mouseY < this.mapAreaButton.y + this.mapAreaButton.h
+		) {
+			this.mapAreaShow();
+			this.mapArea.show();
+		}
 		if (this.mapAreaButton.isSelect === true) {
 			this.mapArea.selected();
 			this.updateMapArea();
-			this.mapArea.show();
+			this.mapArea.showSelectTile();
 		}
 		this.mapAreaButton.show();
 	}
@@ -156,15 +165,6 @@ class Layout {
 		this.switchDrawArea();
 
 		// mapAreaを表示する
-		// if (
-		// 	mouseX > this.mapAreaButton.x &&
-		// 	mouseX < this.mapAreaButton.x + this.mapAreaButton.w &&
-		// 	mouseY > this.mapAreaButton.y &&
-		// 	mouseY < this.mapAreaButton.y + this.mapAreaButton.h
-		// ) {
-		// 	console.log('ok');
-		// 	this.mapAreaShow();
-		// }
 		this.switchMapArea();
 
 		// DataUIを表示する
